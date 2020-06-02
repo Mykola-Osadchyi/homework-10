@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 /* montserrat-regular - latin */
 @font-face {
   font-family: 'Montserrat';
@@ -74,6 +81,8 @@
 
 .list {
   list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -118,7 +127,8 @@ body {
   /* Устаревшее свойство clip для старых браузеров */
   clip: rect(0 0 0 0);
   /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
-  clip-path: inset(50%);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
   margin: -1px;
 }
@@ -127,6 +137,18 @@ body {
 
 .header {
   padding: 30px 0px 224px 0px;
+  background-image: -webkit-gradient(
+      linear,
+      left top, left bottom,
+      from(rgba(243, 129, 129, 0.9)),
+      to(rgba(252, 227, 138, 0.9))
+    ),
+    url(../img/banner.jpg);
+  background-image: -o-linear-gradient(
+      rgba(243, 129, 129, 0.9),
+      rgba(252, 227, 138, 0.9)
+    ),
+    url(../img/banner.jpg);
   background-image: linear-gradient(
       rgba(243, 129, 129, 0.9),
       rgba(252, 227, 138, 0.9)
@@ -135,8 +157,20 @@ body {
   background-repeat: no-repeat;
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
   .header {
+    background-image: -webkit-gradient(
+        linear,
+        left top, left bottom,
+        from(rgba(243, 129, 129, 0.9)),
+        to(rgba(252, 227, 138, 0.9))
+      ),
+      url(../img/banner@2x.jpg);
+    background-image: -o-linear-gradient(
+        rgba(243, 129, 129, 0.9),
+        rgba(252, 227, 138, 0.9)
+      ),
+      url(../img/banner@2x.jpg);
     background-image: linear-gradient(
         rgba(243, 129, 129, 0.9),
         rgba(252, 227, 138, 0.9)
@@ -146,9 +180,15 @@ body {
 }
 
 .navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .header__navigation {
@@ -204,6 +244,8 @@ body {
   visibility: visible;
   color: var(--second-color);
   fill: var(--second-color);
+  -webkit-transition: opacity 200ms linear, visibility 200ms linear, color 200ms linear;
+  -o-transition: opacity 200ms linear, visibility 200ms linear, color 200ms linear;
   transition: opacity 200ms linear, visibility 200ms linear, color 200ms linear;
 }
 
@@ -286,8 +328,10 @@ body {
 }
 
 .service__list {
-  flex-wrap: wrap;
-  justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .service__item {
@@ -361,7 +405,9 @@ body {
 }
 
 .team__list {
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .team__item {
@@ -380,6 +426,16 @@ body {
 .overlay {
   width: 100%;
   height: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    left top, left bottom,
+    from(rgba(243, 129, 129, 0.9)),
+    to(rgba(252, 227, 138, 0.9))
+  );
+  background-image: -o-linear-gradient(
+    rgba(243, 129, 129, 0.9),
+    rgba(252, 227, 138, 0.9)
+  );
   background-image: linear-gradient(
     rgba(243, 129, 129, 0.9),
     rgba(252, 227, 138, 0.9)
@@ -387,9 +443,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   visibility: hidden;
   opacity: 0;
 }
@@ -397,14 +459,27 @@ body {
 .team__item:hover .overlay {
   opacity: 1;
   visibility: visible;
-  transform: translate(-10px, -10px);
+  -webkit-transform: translate(-10px, -10px);
+      -ms-transform: translate(-10px, -10px);
+          transform: translate(-10px, -10px);
+  -webkit-transition: opacity 200ms linear, -webkit-transform 200ms linear;
+  transition: opacity 200ms linear, -webkit-transform 200ms linear;
+  -o-transition: opacity 200ms linear, transform 200ms linear;
   transition: opacity 200ms linear, transform 200ms linear;
+  transition: opacity 200ms linear, transform 200ms linear, -webkit-transform 200ms linear;
 }
 
 .team__item:hover .team__item-photo {
-  box-shadow: 10px 10px 0px 0px var(--fourth-color);
-  transform: translate(-10px, -10px);
+  -webkit-box-shadow: 10px 10px 0px 0px var(--fourth-color);
+          box-shadow: 10px 10px 0px 0px var(--fourth-color);
+  -webkit-transform: translate(-10px, -10px);
+      -ms-transform: translate(-10px, -10px);
+          transform: translate(-10px, -10px);
+  -webkit-transition: -webkit-transform 200ms linear, -webkit-box-shadow 200ms linear;
+  transition: -webkit-transform 200ms linear, -webkit-box-shadow 200ms linear;
+  -o-transition: transform 200ms linear, box-shadow 200ms linear;
   transition: transform 200ms linear, box-shadow 200ms linear;
+  transition: transform 200ms linear, box-shadow 200ms linear, -webkit-transform 200ms linear, -webkit-box-shadow 200ms linear;
 }
 
 .social-list__item-link {
@@ -413,10 +488,18 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-color: var(--third-color);
+  -webkit-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
   transition: background-color 200ms linear;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .social-list__item:not(:last-child) {
@@ -431,6 +514,8 @@ body {
   width: 26px;
   height: 26px;
   fill: var(--first-color);
+  -webkit-transition: fill 200ms linear;
+  -o-transition: fill 200ms linear;
   transition: fill 200ms linear;
 }
 
@@ -462,9 +547,15 @@ body {
 /* ! FOOTER */
 .main-footer {
   padding: 10px 0px 12px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
@@ -491,8 +582,12 @@ body {
 }
 
 .main-footer__contact-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .input-user-email {
@@ -506,6 +601,38 @@ body {
   font-weight: 400;
   text-align: left;
   padding-left: 14px;
+}
+
+.input-user-email::-webkit-input-placeholder {
+  font-size: 15px;
+  color: #cccccc;
+  font-family: var(--third-font);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.input-user-email::-moz-placeholder {
+  font-size: 15px;
+  color: #cccccc;
+  font-family: var(--third-font);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.input-user-email:-ms-input-placeholder {
+  font-size: 15px;
+  color: #cccccc;
+  font-family: var(--third-font);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.input-user-email::-ms-input-placeholder {
+  font-size: 15px;
+  color: #cccccc;
+  font-family: var(--third-font);
+  font-style: italic;
+  line-height: 1.6;
 }
 
 .input-user-email::placeholder {
