@@ -411,7 +411,7 @@ body {
   margin-bottom: 44px;
 }
 
-.team__description {
+.section__description {
   max-width: 980px;
   margin: 0 auto 90px;
   font-size: 15px;
@@ -599,7 +599,7 @@ body {
   color: var(--first-color);
 }
 
-.main-footer__contact-form {
+.contact-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
